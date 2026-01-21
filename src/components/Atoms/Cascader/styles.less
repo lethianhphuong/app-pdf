@@ -1,0 +1,21 @@
+.gt-cascader {
+  .ant-select-clear {
+    display: flex;
+    width: unset;
+  }
+
+  .gt-cascader-menus {
+    .ant-cascader-menu {
+      overflow-x: hidden !important;
+    }
+  }
+
+  .ant-select-selection-overflow {
+    flex-wrap: nowrap;
+    overflow: auto hidden;
+
+    .ant-select-selection-overflow-item:first-child {
+      max-width: calc(100% - 8px);
+    }
+  }
+}

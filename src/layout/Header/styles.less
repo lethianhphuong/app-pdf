@@ -1,0 +1,146 @@
+.gt-layout-header {
+  height: var(--gt-header-height);
+  box-shadow:
+    2px 2px 5px 0 rgba(0, 0, 0, 0.12),
+    2px 2px 5px 0 rgba(0, 0, 0, 0.08);
+  padding: 0 20px 0 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  z-index: 10;
+  border: 1px solid var(--gt-border-color);
+
+  background-image: url('/header-bg.jpg');
+  background-repeat: repeat;
+
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.5;
+    * {
+      line-height: inherit;
+    }
+  }
+
+  .header-breadcumbs {
+    ol {
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .ant-breadcrumb-link,
+    .ant-breadcrumb-separator {
+      font-weight: 700;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    li:last-child > .ant-breadcrumb-link {
+      color: var(--gt-base-color);
+    }
+  }
+}
+
+.alert-popup {
+  .ant-tabs-nav {
+    margin-bottom: 0px;
+
+    &::before {
+      border-bottom: none;
+    }
+  }
+  .ant-tabs-tab {
+    padding: 0;
+  }
+
+  .ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 0 0 16px;
+  }
+}
+
+.noti-popup {
+  background-color: var(--gt-container-bg-color);
+  background-clip: padding-box;
+  border-radius: 6px;
+  outline: none;
+  box-shadow:
+    0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .notification-list {
+    overflow-y: auto;
+    flex: 1;
+
+    .ant-spin-nested-loading {
+      height: 100%;
+
+      &:has(.ant-list-empty-text) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .notification-item {
+      padding: 0;
+      cursor: pointer;
+
+      :hover {
+        z-index: 2;
+        background-color: #fafafa;
+      }
+
+      .ant-card {
+        border-radius: 0;
+        padding: 10px;
+        ::before,
+        ::after {
+          display: none;
+        }
+      }
+      .ant-card-body {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0;
+        background-color: inherit;
+      }
+
+      .ant-card-actions {
+        border-top-width: 0;
+        background-color: inherit;
+        li {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      .unread {
+        width: 7px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-color: var(--gt-primary-color);
+      }
+    }
+  }
+
+  .noti-popup-footer {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    color: var(--gt-base-color);
+    box-shadow:
+      0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  }
+}

@@ -1,0 +1,25 @@
+.gt-select {
+  .ant-select-clear {
+    display: flex;
+    width: unset;
+  }
+
+  .ant-select-selection-overflow {
+    flex-wrap: nowrap;
+    overflow: auto hidden;
+
+    .ant-select-selection-overflow-item:first-child {
+      max-width: calc(100% - 8px);
+    }
+  }
+
+  &.ant-select-disabled {
+    .ant-select-selector {
+      color: inherit !important;
+    }
+  }
+
+  &:not(.ant-select-disabled) .ant-select-selector {
+    background-color: inherit !important;
+  }
+}

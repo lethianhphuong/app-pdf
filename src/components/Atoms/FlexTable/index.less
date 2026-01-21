@@ -1,0 +1,115 @@
+.gt-flex-table {
+  .ant-table {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    gap: 4px;
+
+    > .ant-table-title {
+      border: none !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      flex: 'auto';
+      overflow: hidden;
+      max-height: 100%;
+    }
+
+    > .ant-table-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow-y: hidden;
+      max-height: 100%;
+
+      > .ant-table-body {
+        max-height: unset !important;
+        flex: 1;
+        overflow-y: auto !important;
+      }
+    }
+
+    .ant-table-row,
+    .ant-table-thead {
+      .ant-table-cell {
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+      }
+    }
+
+    &.ant-table-bordered.ant-table-empty {
+      flex: unset;
+      .ant-table-container {
+        border-inline-start: none;
+      }
+      .ant-table-thead,
+      .ant-table-tbody {
+        .ant-table-cell:first-child {
+          border-inline-start: 1px solid var(--gt-border-color);
+        }
+      }
+      .ant-table-thead .ant-table-cell-scrollbar {
+        display: none;
+      }
+    }
+
+    &.ant-table-bordered:not(.ant-table-empty) {
+      .ant-table-container {
+        border-inline-end: 1px solid var(--gt-border-color);
+      }
+      .ant-table-row,
+      .ant-table-thead {
+        .ant-table-cell:last-child {
+          border-inline-end: none;
+        }
+      }
+
+      .ant-table-body {
+        border-bottom: 1px solid var(--gt-border-color);
+      }
+    }
+  }
+
+  .ant-table-thead {
+    .ant-table-cell {
+      text-align: center;
+    }
+    .ant-table-cell.ant-table-column-has-sorters {
+      .ant-table-column-sorters {
+        gap: 4px;
+      }
+      .ant-table-column-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .ant-pagination {
+    margin: 0 !important;
+    padding: 8px;
+    background-color: rgb(255, 255, 255);
+    > .ant-pagination-total-text {
+      flex: 1;
+    }
+  }
+
+  > .ant-spin-nested-loading {
+    height: 100%;
+    .ant-spin-spinning {
+      max-height: 100%;
+    }
+
+    > .ant-spin-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .ant-table-sticky-scroll {
+    display: none;
+  }
+}

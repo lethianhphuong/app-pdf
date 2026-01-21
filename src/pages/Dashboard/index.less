@@ -1,0 +1,83 @@
+.dashboard {
+  .gt-container-content {
+    // height: auto;
+    // min-height: 100%;
+  }
+  .sub-title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+  }
+
+  .statistic-wrapper {
+    position: relative;
+    height: 100%;
+    padding: 16px;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4);
+    transition:
+      opacity 500ms ease-in-out,
+      bottom 500ms ease-in-out;
+
+    &[aria-hidden='true'] {
+      opacity: 0;
+      bottom: -10px;
+    }
+
+    &:not([aria-hidden='true']) {
+      opacity: 1;
+      bottom: 0px;
+    }
+
+    .ant-statistic {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+
+      * {
+        font-weight: inherit;
+        font-size: inherit;
+        color: #fff;
+      }
+
+      .ant-statistic-title {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow: hidden;
+        text-wrap: nowrap;
+      }
+
+      .ant-statistic-content {
+        font-size: inherit !important;
+      }
+    }
+
+    & > .ant-statistic:first-child {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+  }
+
+  .ant-table ~ .ant-pagination {
+    margin-bottom: 0;
+  }
+
+  .gt-row-highlight > td,
+  .gt-row-highlight > td > span,
+  .gt-row-highlight > td > a,
+  .gt-row-highlight > td > span > a {
+    color: red;
+  }
+  .gt-row-highlight > td > a:hover,
+  .gt-row-highlight > td > span > a:hover {
+    color: #ff000096;
+  }
+}

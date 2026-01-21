@@ -1,0 +1,23 @@
+.gt-collapse {
+    background-color: transparent;
+    border: none;
+    .ant-collapse-item {
+        border-radius: 4px !important;
+        border: 1px solid;
+        border-color: var(--gt-base-border-color);
+        .ant-collapse-header {
+            color: var(--gt-primary-color);
+            font-weight: 600;
+        }
+        .ant-collapse-content {
+            background-color: transparent;
+            border-top: none;
+            .ant-collapse-content-box {
+                padding: var(--gt-base-pading);
+            }
+        }
+    }
+    .ant-collapse-item:not(:last-child) {
+        margin-bottom: var(--gt-base-pading);
+    }
+}

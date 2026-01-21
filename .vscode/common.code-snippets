@@ -1,0 +1,61 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  "Print to console": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "clo",
+    "body": ["console.log('$2 >>:', $1);"],
+    "description": "My Log output to console"
+  },
+  "Import from": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "impf",
+    "body": ["import { $2 } from \"$1\""],
+    "description": "Import from"
+  },
+  "Import React from react": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "impr",
+    "body": ["import React from \"react\";"],
+    "description": "Import React from react"
+  },
+  "useState react": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "usr",
+    "body": ["const [$1, $2] = useState($3)"],
+    "description": "useState react"
+  },
+  "forwarded Ref react": {
+    "scope": "javascript, typescript,typescriptreact",
+    "prefix": "frr",
+    "body": [
+      "import { forwardRef, useImperativeHandle } from 'react';"
+      ""
+      "export interface $1Props {"
+      "  [x: string]: any;"
+      "}"
+      ""
+      "export interface $1RefProps {"
+      "  [x: string]: any;"
+      "}"
+      ""
+      "const $1 = forwardRef(function $1(props: $1Props, ref: React.ForwardedRef<$1RefProps>) {"
+      "  useImperativeHandle(ref, () => ({"
+      "    exposeFunctionName: () => {"
+      "      //content"
+      "    }"
+      "  }));"
+      ""
+      "  return <></>;"
+      "});"
+      ""
+      "export default $1;"
+              ],
+    "description": "forwarded Ref react"
+  }
+}

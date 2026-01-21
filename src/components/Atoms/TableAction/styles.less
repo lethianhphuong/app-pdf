@@ -1,0 +1,26 @@
+.gt-table-action {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  .pop-up-delete {
+    line-height: 1;
+  }
+
+  .ant-btn-sm {
+    height: 100%;
+
+    &:disabled {
+      .anticon-delete {
+        opacity: 0.25;
+      }
+    }
+
+    .ant-btn-icon > .anticon {
+      font-size: 18px;
+    }
+  }
+}
