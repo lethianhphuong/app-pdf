@@ -1,3 +1,4 @@
+
 import { Container } from '@/components/Atoms';
 import { BookTwoTone, EditOutlined, DeleteOutlined, PlusOutlined, FileTextOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Button, Card, Input, Space } from 'antd';
@@ -12,7 +13,7 @@ interface Note {
     content: string;
 }
 
-export default function SiderBarPdf() {
+export default function SiderBarPdf_Right() {
     const [notes, setNotes] = useState<Note[]>([
         {
             id: 1,
@@ -56,7 +57,7 @@ export default function SiderBarPdf() {
     };
 
     return (
-        <div className='SiderBarPdf flex h-full flex-col transition-all duration-300 w-[400px]'>
+        <div className='SiderBarPdf flex w-full h-full flex-col transition-all duration-300' style={{ borderLeft: '1px solid #d9d9d9' }}>
             {/* Header */}
             <div className='p-3 flex items-center gap-2' style={{ borderBottom: '1px solid #d9d9d9' }}>
                 <FileTextOutlined style={{ fontSize: '20px' }} />

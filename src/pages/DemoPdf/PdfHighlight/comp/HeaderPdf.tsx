@@ -52,7 +52,7 @@ export default function HeaderPdf({
                 </div>
             </div>
 
-            <div className='flex justify-between items-center w-[550px]'>
+            <div className='flex justify-between items-center w-[450px]'>
                 <div className='flex items-center gap-2'>
                     <Pagination simple current={currentPage} total={totalPages * 10} />
                 </div>

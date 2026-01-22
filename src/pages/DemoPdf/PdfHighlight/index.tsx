@@ -8,10 +8,11 @@ import HighlightContainer from "./components/HighlightContainer";
 import { PdfLoader } from "./components/PdfLoader";
 
 import "./style/style.css"
-import SiderBarPdf from "./SiderBarPdf";
+import { SiderBarPdf_Left, SiderBarPdf_Right } from "./comp/SiderBarPdf";
 import { ContextPdf } from "./contexts/ProviderPdf";
 import { Container } from "@/components/Atoms";
 import HeaderPdf from "./comp/HeaderPdf";
+import { Col, Row } from "antd";
 
 const PRIMARY_PDF_URL = "HDSD_NVCBCS_VANV.pdf";
 
@@ -213,61 +214,74 @@ export default function PdfHighlight() {
     }, [scrollToHighlightFromHash]);
 
 
-    return <div className="flex flex-col h-screen flex-col bg-[#fff]">
+    return <div className="flex flex-col h-full bg-[#fff]">
         <ContextPdf.Provider value={{}}>
-            <HeaderPdf />
 
+            <div className="flex flex-1 h-full overflow-hidden">
+                <Row gutter={[8, 8]} className="flex h-full">
+                    <Col span={6} className="flex h-full">
+                        <SiderBarPdf_Left />
+                    </Col>
+                    <Col span={18} className="flex flex-col h-full">
+                        <HeaderPdf />
+                        <Row gutter={[8, 8]} className="flex flex-1 overflow-hidden">
+                            <Col span={16} >
+                                <div className="relative w-full h-full flex-1 overflow-hidden ">
+                                    <PdfLoader document={url}>
+                                        {(pdfDocument) => (
+                                            <PdfHighlighter
+                                                enableAreaSelection={(event) => event.altKey || areaMode}
+                                                areaSelectionMode={areaMode}
+                                                pdfDocument={pdfDocument}
+                                                onScrollAway={resetHash}
+                                                utilsRef={(_pdfHighlighterUtils) => {
+                                                    highlighterUtilsRef.current = _pdfHighlighterUtils;
+                                                }}
+                                                pdfScaleValue={pdfScaleValue}
+                                                textSelectionColor={highlightPen ? "rgba(255, 226, 143, 1)" : undefined}
+                                                onSelection={(highlightPen || areaMode) ? (selection) => {
+                                                    addHighlight(selection.makeGhostHighlight(), "");
+                                                    if (areaMode) setAreaMode(false);
+                                                } : undefined}
+                                                selectionTip={highlightPen ? undefined : <ExpandableTip addHighlight={addHighlight} />}
+                                                highlights={highlights}
+                                                enableFreetextCreation={() => freetextMode}
+                                                onFreetextClick={handleFreetextClick}
+                                                enableImageCreation={() => imageMode}
+                                                onImageClick={handleImageClick}
+                                                enableDrawingMode={drawingMode}
+                                                onDrawingComplete={handleDrawingComplete}
+                                                onDrawingCancel={handleDrawingCancel}
+                                                drawingStrokeColor={drawingStrokeColor}
+                                                drawingStrokeWidth={drawingStrokeWidth}
+                                                enableShapeMode={shapeMode}
+                                                onShapeComplete={handleShapeComplete}
+                                                onShapeCancel={handleShapeCancel}
+                                                shapeStrokeColor={shapeStrokeColor}
+                                                shapeStrokeWidth={shapeStrokeWidth}
+                                                style={{
+                                                    height: "100%",
+                                                }}
+                                            >
+                                                <HighlightContainer
+                                                    editHighlight={editHighlight}
+                                                    deleteHighlight={(id) => deleteHighlight({ id } as Highlight)}
+                                                    onContextMenu={handleContextMenu}
+                                                />
+                                            </PdfHighlighter>
+                                        )}
+                                    </PdfLoader>
 
-            <div className="flex flex-1 overflow-hidden">
-                <div className="relative flex-1 overflow-hidden ">
-                    <PdfLoader document={url}>
-                        {(pdfDocument) => (
-                            <PdfHighlighter
-                                enableAreaSelection={(event) => event.altKey || areaMode}
-                                areaSelectionMode={areaMode}
-                                pdfDocument={pdfDocument}
-                                onScrollAway={resetHash}
-                                utilsRef={(_pdfHighlighterUtils) => {
-                                    highlighterUtilsRef.current = _pdfHighlighterUtils;
-                                }}
-                                pdfScaleValue={pdfScaleValue}
-                                textSelectionColor={highlightPen ? "rgba(255, 226, 143, 1)" : undefined}
-                                onSelection={(highlightPen || areaMode) ? (selection) => {
-                                    addHighlight(selection.makeGhostHighlight(), "");
-                                    if (areaMode) setAreaMode(false);
-                                } : undefined}
-                                selectionTip={highlightPen ? undefined : <ExpandableTip addHighlight={addHighlight} />}
-                                highlights={highlights}
-                                enableFreetextCreation={() => freetextMode}
-                                onFreetextClick={handleFreetextClick}
-                                enableImageCreation={() => imageMode}
-                                onImageClick={handleImageClick}
-                                enableDrawingMode={drawingMode}
-                                onDrawingComplete={handleDrawingComplete}
-                                onDrawingCancel={handleDrawingCancel}
-                                drawingStrokeColor={drawingStrokeColor}
-                                drawingStrokeWidth={drawingStrokeWidth}
-                                enableShapeMode={shapeMode}
-                                onShapeComplete={handleShapeComplete}
-                                onShapeCancel={handleShapeCancel}
-                                shapeStrokeColor={shapeStrokeColor}
-                                shapeStrokeWidth={shapeStrokeWidth}
-                                style={{
-                                    height: "100%",
-                                }}
-                            >
-                                <HighlightContainer
-                                    editHighlight={editHighlight}
-                                    deleteHighlight={(id) => deleteHighlight({ id } as Highlight)}
-                                    onContextMenu={handleContextMenu}
-                                />
-                            </PdfHighlighter>
-                        )}
-                    </PdfLoader>
-
-                </div>
-                <SiderBarPdf />
+                                </div>
+                            </Col>
+                            <Col span={8} className="flex h-full">
+                                <SiderBarPdf_Right />
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
             </div>
-        </ContextPdf.Provider>;
+
+        </ContextPdf.Provider>
     </div>
 }

@@ -1,0 +1,92 @@
+.custom-tabs .ant-tabs-nav {
+    margin-bottom: 16px;
+}
+
+.custom-tabs .ant-tabs-tab {
+    color: #8c8c8c;
+    font-weight: 500;
+    padding: 8px 16px;
+}
+
+.custom-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #1890ff;
+    font-weight: 600;
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+    background: #1890ff;
+}
+
+.custom-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-tabs .ant-tabs-content-holder {
+    flex: 1;
+    overflow: hidden;
+}
+
+.custom-tabs .ant-tabs-content,
+.custom-tabs .ant-tabs-content-top {
+    height: 100%;
+}
+
+.custom-tabs .ant-tabs-tabpane {
+    height: 100%;
+}
+
+.button-scroll-container {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.button-scroll-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.custom-tree .ant-tree-treenode {
+    width: 100%;
+    padding: 4px 0;
+}
+
+.custom-tree .ant-tree-node-content-wrapper {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.custom-tree .ant-tree-title {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.custom-tree .ant-tree-treenode-selected .ant-tree-node-content-wrapper {
+    background-color: #dbf0f5;
+    border: 1px solid #edebea;
+    color: blue;
+}
+
+.custom-tree .ant-tree-node-content-wrapper:hover {
+    background-color: #edfcff;
+}
+
+.custom-tree .ant-tree-iconEle {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.custom-tree .ant-tree-switcher {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
